@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlorArt - Главная</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/images/Group 1 (1).png" alt="FlorArt - Логотип" width="500" height="500">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index2.html" class="active">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+   <section class="hero-slider">
+        <div class="slides">
+            <div class="slide" style="background-image: url('/images/bbac9466261371.5b0feeb229516.jpg')"></div>
+            <div class="slide" style="background-image: url('/images/M_height.jpg')"></div>
+            <div class="slide active" style="background-image: url('/images/Frame\ 165\ \(4\).png')"></div>
+        </div>
+        <div class="hero-content right-aligned">
+            <h1>Прекрасные цветы для ваших особых моментов</h1>
+            <a href="catalog.html" class="btn">Перейти в каталог</a>
+        </div>
+    </section>
+    <div class="container">
+        <div class="info-blocks">
+            <div class="info-block">
+                <h3>Свежие цветы</h3>
+                <p>Мы работаем только с проверенными поставщиками, чтобы гарантировать свежесть наших цветов.</p>
+            </div>
+            <div class="info-block">
+                <h3>Быстрая доставка</h3>
+                <p>Доставим ваш букет в любую точку города в течение 2 часов с момента заказа.</p>
+            </div>
+            <div class="info-block">
+                <h3>Индивидуальный подход</h3>
+                <p>Создадим уникальный букет специально для вас по вашему эскизу или описанию.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="section-title">Новинки</h2>
+        <div class="products">
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/1719493503_74112278.jpg')"></div>
+                <div class="product-info">
+                    <div class="product-title">Весенняя нежность</div>
+                    <div class="product-price">2 500 ₽</div>
+                    <a href="detal.html" class="btn">В корзину</a>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/2744.970.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-title">Романтический вечер</div>
+                    <div class="product-price">3 200 ₽</div>
+                    <a href="detal copy.html" class="btn">В корзину</a>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/6680758519.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-title">Королевский букет</div>
+                    <div class="product-price">4 800 ₽</div>
+                    <a href="detal copy 2.html" class="btn">В корзину</a>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/25wqm9cz63xouxpwzbc3yyc54yi29uwr.jpeg');"></div>
+                <div class="product-info">
+                    <div class="product-title">Летнее настроение</div>
+                    <div class="product-price">2 900 ₽</div>
+                    <a href="detal copy 3.html" class="btn">В корзину</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+            <a href="index2.html" class="pagination-prev" aria-label="Предыдущая страница">&laquo;</a>
+            <a href="index2.html" class="active">1</a>
+            <a href="catalog.html">2</a>
+            <a href="contacts.html">3</a>
+            <a href="catalog.html" class="pagination-next" aria-label="Следующая страница">&raquo;</a>
+    </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FlorArt</h3>
+                    <p>Магазин свежих цветов и букетов для любых мероприятий</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p>г. Москва, ул. Цветочная, 12</p>
+                    <p>+7 (123) 456-78-90</p>
+                    <p>info@florart.ru</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="https://vk.com/lina_fire" target="_blank">VK</a>
+                        <a href="https://t.me/LINA_fir" target="_blank">TG</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FlorArt. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+<!--<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    
+    // Инициализация первого слайда
+    slides[currentSlide].classList.add('active');
+    
+    // Автоматическое переключение
+    setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }, 5000);
+});
+</script> -->
+
+</body>
+</html>
