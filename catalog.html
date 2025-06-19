@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlorArt - Главная</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/images/Group 1 (1).png" alt="FlorArt - Логотип" width="500" height="500">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index2.html" >Главная</a></li>
+                    <li><a href="catalog.html" class="active">Каталог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <h1 class="section-title">Каталог букетов</h1>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Поиск по названию...">
+                <button class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="sort-options">
+                <select>
+                    <option value="default">Сортировка: по умолчанию</option>
+                    <option value="price-asc">Цена: по возрастанию</option>
+                    <option value="price-desc">Цена: по убыванию</option>
+                    <option value="name-asc">Название: А-Я</option>
+                    <option value="name-desc">Название: Я-А</option>
+                </select>
+            </div>
+        </div>
+        <div class="products">
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/1719493503_74112278.jpg')"></div>
+                <div class="product-info">
+                    <div class="product-title">Весенняя нежность</div>
+                    <div class="product-price">2 500 ₽</div>
+                    <a href="detal.html" class="btn">В корзину</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/2744.970.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-title">Романтический вечер</div>
+                    <div class="product-price">3 200 ₽</div>
+                    <a href="detal copy.html" class="btn">В корзину</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/6680758519.jpg');"></div>
+                <div class="product-info">
+                    <div class="product-title">Королевский букет</div>
+                    <div class="product-price">4 800 ₽</div>
+                    <a href="detal copy 2.html" class="btn">В корзину</a>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/25wqm9cz63xouxpwzbc3yyc54yi29uwr.jpeg');"></div>
+                <div class="product-info">
+                    <div class="product-title">Летнее настроение</div>
+                    <div class="product-price">2 900 ₽</div>
+                    <a href="detal copy 3.html" class="btn">В корзину</a>
+                </div>
+            </div>
+        </div>
+    <div class="pagination">
+            <a href="index2.html" class="pagination-prev" aria-label="Предыдущая страница">&laquo;</a>
+            <a href="index2.html" >1</a>
+            <a href="catalog.html" class="active">2</a>
+            <a href="contacts.html">3</a>
+            <a href="contacts.html" class="pagination-next" aria-label="Следующая страница">&raquo;</a>
+    </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FlorArt</h3>
+                    <p>Магазин свежих цветов и букетов для любых мероприятий</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p>г. Москва, ул. Цветочная, 12</p>
+                    <p>+7 (123) 456-78-90</p>
+                    <p>info@florart.ru</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="https://vk.com/lina_fire" target="_blank">VK</a>
+                        <a href="https://t.me/LINA_fir" target="_blank">TG</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FlorArt. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
