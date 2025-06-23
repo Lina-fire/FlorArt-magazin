@@ -26,11 +26,11 @@
         
         <div class="contact-container">
             <div class="contact-form">
-                <h3>Обратная связь</h3>
+                <h3>Закажи букет онлайн!</h3>
                 <form>
                     <input type="text" placeholder="Ваше имя">
                     <input type="email" placeholder="Ваш email">
-                    <textarea placeholder="Ваше сообщение"></textarea>
+                    <textarea placeholder="Ваше сообщение (можете прописать предпочтения к заказу или адрес доставки. Стоимость доставки - 300 р. по городу)"></textarea>
                     <button type="submit" class="btn">Отправить</button>
                 </form>
             </div>
@@ -51,13 +51,6 @@
         <div class="map">
             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a2b3c4d5e6f7g8h9i0j&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
         </div>
-    <div class="pagination">
-            <a href="catalog.html" class="pagination-prev" aria-label="Предыдущая страница">&laquo;</a>
-            <a href="index2.html" >1</a>
-            <a href="catalog.html">2</a>
-            <a href="contacts.html"class="active">3</a>
-            <a href="contacts.html" class="pagination-next" aria-label="Следующая страница">&raquo;</a>
-    </div>
     </main>
     <footer>
         <div class="container">
@@ -85,5 +78,59 @@
             </div>
         </div>
     </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Валидация формы
+    const form = document.querySelector('.contact-form form');
+    const inputs = form.querySelectorAll('input, textarea');
+    
+    form.addEventListener('submit', function(e) {
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.style.borderColor = 'red';
+                isValid = false;
+            } else {
+                input.style.borderColor = '#ddd';
+            }
+            
+            // Проверка email
+            if (input.type === 'email' && !isValidEmail(input.value)) {
+                input.style.borderColor = 'red';
+                isValid = false;
+            }
+        });
+        
+        if (!isValid) {
+            e.preventDefault();
+            alert('Пожалуйста, заполните все поля корректно!');
+        }
+    });
+    
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    // Открытие соцсетей в новом окне
+    document.querySelectorAll('.social-links a').forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+    
+    // Анимация формы
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.style.borderColor = '#775F61';
+            this.style.boxShadow = '0 0 0 2px rgba(119, 95, 97, 0.2)';
+        });
+        
+        input.addEventListener('blur', function() {
+            this.style.borderColor = '#ddd';
+            this.style.boxShadow = 'none';
+        });
+    });
+});
+</script>
 </body>
 </html>
