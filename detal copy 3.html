@@ -120,5 +120,82 @@
             </div>
         </div>
     </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Галерея изображений
+    const mainImage = document.querySelector('.main-image');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            mainImage.style.backgroundImage = this.style.backgroundImage;
+        });
+    });
+    
+    // Отзывы
+    const reviewsContainer = document.querySelector('.reviews');
+    const reviewForm = document.createElement('form');
+    reviewForm.className = 'review-form';
+    reviewForm.innerHTML = `
+        <h3>Добавить отзыв</h3>
+        <input type="text" placeholder="Ваше имя" required>
+        <textarea placeholder="Ваш отзыв" required></textarea>
+        <button type="submit" class="btn">Отправить</button>
+    `;
+    
+    reviewsContainer.insertBefore(reviewForm, reviewsContainer.firstChild);
+    
+    // Загрузка отзывов из localStorage
+    function loadReviews() {
+        const savedReviews = localStorage.getItem('productReviews');
+        if (savedReviews) {
+            const reviews = JSON.parse(savedReviews);
+            reviews.forEach(review => {
+                addReviewToDOM(review.name, review.text, review.date);
+            });
+        }
+    }
+    
+    // Добавление отзыва в DOM
+    function addReviewToDOM(name, text, date) {
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review';
+        reviewElement.innerHTML = `
+            <div class="review-author">${name}</div>
+            <div class="review-date">${date}</div>
+            <div class="review-text"><p>${text}</p></div>
+        `;
+        reviewsContainer.insertBefore(reviewElement, reviewForm.nextSibling);
+    }
+    
+    // Обработка отправки формы
+    reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nameInput = this.querySelector('input');
+        const textInput = this.querySelector('textarea');
+        
+        const newReview = {
+            name: nameInput.value,
+            text: textInput.value,
+            date: new Date().toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' })
+        };
+        
+        // Сохраняем в localStorage
+        let reviews = JSON.parse(localStorage.getItem('productReviews')) || [];
+        reviews.push(newReview);
+        localStorage.setItem('productReviews', JSON.stringify(reviews));
+        
+        // Добавляем в DOM
+        addReviewToDOM(newReview.name, newReview.text, newReview.date);
+        
+        // Очищаем форму
+        nameInput.value = '';
+        textInput.value = '';
+    });
+    
+    // Загружаем отзывы при загрузке страницы
+    loadReviews();
+});
+</script>
 </body>
 </html>
