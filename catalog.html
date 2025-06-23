@@ -54,7 +54,16 @@
                     <a href="detal.html" class="btn">В корзину</a>
                 </div>
             </div>
-            
+
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/1727736163_5499669.jpg')"></div>
+                <div class="product-info">
+                    <div class="product-title">Cвежесть лета</div>
+                    <div class="product-price">2 500 ₽</div>
+                    <a href="detal copy 4.html" class="btn">В корзину</a>
+                </div>
+            </div>
+
             <div class="product">
                 <div class="product-img" style="background-image: url('/images/2744.970.jpg');"></div>
                 <div class="product-info">
@@ -63,7 +72,7 @@
                     <a href="detal copy.html" class="btn">В корзину</a>
                 </div>
             </div>
-            
+
             <div class="product">
                 <div class="product-img" style="background-image: url('/images/6680758519.jpg');"></div>
                 <div class="product-info">
@@ -81,6 +90,16 @@
                     <a href="detal copy 3.html" class="btn">В корзину</a>
                 </div>
             </div>
+
+            <div class="product">
+                <div class="product-img" style="background-image: url('/images/buket-iz-11-rozovyh-pionov-s-upakovkoy.png');"></div>
+                <div class="product-info">
+                    <div class="product-title">Вдохновение</div>
+                    <div class="product-price">2 900 ₽</div>
+                    <a href="detal copy 5.html" class="btn">В корзину</a>
+                </div>
+            </div>
+
         </div>
     <div class="pagination">
             <a href="index2.html" class="pagination-prev" aria-label="Предыдущая страница">&laquo;</a>
@@ -116,5 +135,129 @@
             </div>
         </div>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const products = document.querySelectorAll('.product');
+    const searchInput = document.querySelector('.search-input');
+    const sortSelect = document.querySelector('select');
+    const productsContainer = document.querySelector('.products');
+    const paginationContainer = document.querySelector('.pagination');
+    
+    // Настройки пагинации
+    const itemsPerPage = 4;
+    let currentPage = 1;
+    let filteredProducts = Array.from(products);
+    
+    // Функция фильтрации
+    function filterProducts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        filteredProducts = Array.from(products).filter(product => {
+            const title = product.querySelector('.product-title').textContent.toLowerCase();
+            return title.includes(searchTerm);
+        });
+        
+        currentPage = 1;
+        renderProducts();
+        renderPagination();
+    }
+    
+    // Функция сортировки
+    function sortProducts() {
+        const sortValue = sortSelect.value;
+        
+        filteredProducts.sort((a, b) => {
+            const aTitle = a.querySelector('.product-title').textContent;
+            const aPrice = parseFloat(a.querySelector('.product-price').textContent.replace(/[^\d.]/g, ''));
+            const bTitle = b.querySelector('.product-title').textContent;
+            const bPrice = parseFloat(b.querySelector('.product-price').textContent.replace(/[^\d.]/g, ''));
+            
+            switch(sortValue) {
+                case 'price-asc': return aPrice - bPrice;
+                case 'price-desc': return bPrice - aPrice;
+                case 'name-asc': return aTitle.localeCompare(bTitle);
+                case 'name-desc': return bTitle.localeCompare(aTitle);
+                default: return 0;
+            }
+        });
+        
+        renderProducts();
+    }
+    
+    // Функция отображения товаров
+    function renderProducts() {
+        // Скрываем все товары
+        products.forEach(product => product.style.display = 'none');
+        
+        // Рассчитываем индексы для текущей страницы
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const productsToShow = filteredProducts.slice(startIndex, endIndex);
+        
+        // Показываем только нужные товары
+        productsToShow.forEach(product => product.style.display = 'block');
+    }
+    
+    // Функция отображения пагинации
+    function renderPagination() {
+        const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+        paginationContainer.innerHTML = '';
+        
+        // Кнопка "Назад"
+        if (currentPage > 1) {
+            const prevLink = document.createElement('a');
+            prevLink.href = '#';
+            prevLink.className = 'pagination-prev';
+            prevLink.innerHTML = '&laquo;';
+            prevLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage--;
+                renderProducts();
+                renderPagination();
+            });
+            paginationContainer.appendChild(prevLink);
+        }
+        
+        // Нумерация страниц
+        for (let i = 1; i <= pageCount; i++) {
+            const pageLink = document.createElement('a');
+            pageLink.href = '#';
+            pageLink.textContent = i;
+            if (i === currentPage) {
+                pageLink.className = 'active';
+            }
+            pageLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = i;
+                renderProducts();
+                renderPagination();
+            });
+            paginationContainer.appendChild(pageLink);
+        }
+        
+        // Кнопка "Вперед"
+        if (currentPage < pageCount) {
+            const nextLink = document.createElement('a');
+            nextLink.href = '#';
+            nextLink.className = 'pagination-next';
+            nextLink.innerHTML = '&raquo;';
+            nextLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage++;
+                renderProducts();
+                renderPagination();
+            });
+            paginationContainer.appendChild(nextLink);
+        }
+    }
+    
+    // Обработчики событий
+    searchInput.addEventListener('input', filterProducts);
+    sortSelect.addEventListener('change', sortProducts);
+    
+    // Инициализация
+    filterProducts();
+});
+    </script>
 </body>
 </html>
